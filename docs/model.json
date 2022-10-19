@@ -1,0 +1,265 @@
+{
+  "entities": [
+    {
+      "name": "Cvik",
+      "parent": null,
+      "attr": [
+        {
+          "name": "id_cviku",
+          "primary": true,
+          "unique": false,
+          "nullable": false
+        },
+        {
+          "name": "nazev",
+          "primary": false,
+          "unique": false,
+          "nullable": false
+        }
+      ],
+      "transform": {
+        "x": 778.9444444444442,
+        "y": 11.711120605468736,
+        "width": 125,
+        "height": 98.88888888888887
+      }
+    },
+    {
+      "name": "Cvik_svalova_skupina",
+      "parent": null,
+      "attr": [
+        {
+          "name": "id_cvik_svalove_skupiny",
+          "primary": false,
+          "unique": false,
+          "nullable": false
+        },
+        {
+          "name": "priorita",
+          "primary": false,
+          "unique": false,
+          "nullable": false
+        }
+      ],
+      "transform": {
+        "x": 1021.7777777777776,
+        "y": 9.988898383246493,
+        "width": 182.43333435058594,
+        "height": 103.33333333333329
+      }
+    },
+    {
+      "name": "Kategorie",
+      "parent": null,
+      "attr": [
+        {
+          "name": "id",
+          "primary": true,
+          "unique": false,
+          "nullable": false
+        },
+        {
+          "name": "název",
+          "primary": false,
+          "unique": false,
+          "nullable": false
+        },
+        {
+          "name": "komplexita",
+          "primary": false,
+          "unique": false,
+          "nullable": false
+        },
+        {
+          "name": "optimani_pocet_setu",
+          "primary": false,
+          "unique": false,
+          "nullable": false
+        },
+        {
+          "name": "optimalni_pocet_opakovani",
+          "primary": false,
+          "unique": false,
+          "nullable": false
+        }
+      ],
+      "transform": {
+        "x": 748.9999999999997,
+        "y": 194.98889838324652,
+        "width": 182.00000000000034,
+        "height": 116.11663818359375
+      }
+    },
+    {
+      "name": "Svalova_skupina",
+      "parent": null,
+      "attr": [
+        {
+          "name": "id_svalove_skupiny",
+          "primary": true,
+          "unique": false,
+          "nullable": false
+        },
+        {
+          "name": "nazev",
+          "primary": false,
+          "unique": false,
+          "nullable": false
+        },
+        {
+          "name": "objem",
+          "primary": false,
+          "unique": false,
+          "nullable": false
+        }
+      ],
+      "transform": {
+        "x": 1299.6666666666665,
+        "y": 8.933342827690936,
+        "width": 196.33333333333348,
+        "height": 104.99999999999997
+      }
+    }
+  ],
+  "relations": [
+    [
+      {
+        "entity": "Cvik_svalova_skupina",
+        "identifying": true,
+        "optional": false,
+        "cardinality": 0,
+        "xor": null,
+        "name": null,
+        "transform": {
+          "anchor": {
+            "x": 1204.2111121283635,
+            "y": 61.93334282769091,
+            "edge": 1
+          },
+          "points": [
+            {
+              "x": 1251.9388893975151,
+              "y": 61.683342827690915
+            }
+          ],
+          "manual": false
+        }
+      },
+      {
+        "entity": "Svalova_skupina",
+        "identifying": false,
+        "optional": true,
+        "cardinality": 1,
+        "xor": null,
+        "name": null,
+        "transform": {
+          "anchor": {
+            "x": 1299.6666666666665,
+            "y": 61.43334282769092,
+            "edge": 3
+          },
+          "points": [
+            {
+              "x": 1251.9388893975151,
+              "y": 61.683342827690915
+            }
+          ],
+          "manual": false
+        }
+      }
+    ],
+    [
+      {
+        "entity": "Cvik",
+        "identifying": false,
+        "optional": false,
+        "cardinality": 0,
+        "xor": null,
+        "name": null,
+        "transform": {
+          "anchor": {
+            "x": 840.0555555555554,
+            "y": 110.60000949435761,
+            "edge": 2
+          },
+          "points": [
+            {
+              "x": 839.8045111762151,
+              "y": 152.79445393880206
+            }
+          ],
+          "manual": false
+        }
+      },
+      {
+        "entity": "Kategorie",
+        "identifying": false,
+        "optional": true,
+        "cardinality": 1,
+        "xor": null,
+        "name": null,
+        "transform": {
+          "anchor": {
+            "x": 839.5534667968749,
+            "y": 194.98889838324652,
+            "edge": 0
+          },
+          "points": [
+            {
+              "x": 839.8045111762151,
+              "y": 152.79445393880206
+            }
+          ],
+          "manual": false
+        }
+      }
+    ],
+    [
+      {
+        "entity": "Cvik",
+        "identifying": false,
+        "optional": true,
+        "cardinality": 1,
+        "xor": null,
+        "name": null,
+        "transform": {
+          "anchor": {
+            "x": 903.9444444444442,
+            "y": 61.15556504991315,
+            "edge": 1
+          },
+          "points": [
+            {
+              "x": 962.8611111111109,
+              "y": 61.54445393880203
+            }
+          ],
+          "manual": false
+        }
+      },
+      {
+        "entity": "Cvik_svalova_skupina",
+        "identifying": true,
+        "optional": false,
+        "cardinality": 0,
+        "xor": null,
+        "name": null,
+        "transform": {
+          "anchor": {
+            "x": 1021.7777777777776,
+            "y": 61.93334282769091,
+            "edge": 3
+          },
+          "points": [
+            {
+              "x": 962.8611111111109,
+              "y": 61.54445393880203
+            }
+          ],
+          "manual": false
+        }
+      }
+    ]
+  ],
+  "notes": []
+}
