@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TrainingPlanGeneratorApplication {
+public class RestApi {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TrainingPlanGeneratorApplication.class, args);
+		SpringApplication.run(RestApi.class, args);
 	}
 
 }
