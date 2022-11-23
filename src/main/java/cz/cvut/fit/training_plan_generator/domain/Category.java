@@ -1,4 +1,4 @@
-package cz.fit.cvut.training_plan_generator.domain;
+package cz.cvut.fit.training_plan_generator.domain;
 
 public class Category implements DomainEntity<Long> {
     private final Long id;

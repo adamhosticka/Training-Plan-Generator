@@ -1,9 +1,9 @@
-package cz.fit.cvut.training_plan_generator;
+package cz.cvut.fit.training_plan_generator;
 
-import cz.fit.cvut.training_plan_generator.domain.Category;
-import cz.fit.cvut.training_plan_generator.domain.Exercise;
-import cz.fit.cvut.training_plan_generator.domain.MuscleGroup;
-import cz.fit.cvut.training_plan_generator.domain.TrainingPlan;
+import cz.cvut.fit.training_plan_generator.domain.Category;
+import cz.cvut.fit.training_plan_generator.domain.Exercise;
+import cz.cvut.fit.training_plan_generator.domain.MuscleGroup;
+import cz.cvut.fit.training_plan_generator.domain.TrainingPlan;
 
 import java.util.*;
 

@@ -1,9 +1,6 @@
-package cz.fit.cvut.training_plan_generator.domain;
-
-import org.springframework.cglib.core.Local;
+package cz.cvut.fit.training_plan_generator.domain;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public class TrainingPlan implements DomainEntity<LocalDateTime> {

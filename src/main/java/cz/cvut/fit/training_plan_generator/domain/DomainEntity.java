@@ -1,4 +1,4 @@
-package cz.fit.cvut.training_plan_generator.domain;
+package cz.cvut.fit.training_plan_generator.domain;
 
 import java.io.Serializable;
 
