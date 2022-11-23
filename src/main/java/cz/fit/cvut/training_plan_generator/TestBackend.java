@@ -25,7 +25,7 @@ public class TestBackend {
         Exercise PullUp = new Exercise(1L, "Pull Up", CompoundCategory, PullCategory);
 //        System.out.println(BenchPress);
 
-        TrainingPlan trainingPlan1 = new TrainingPlan(1L, new Date(System.currentTimeMillis()), Arrays.asList(BenchPress, PullUp));
+        TrainingPlan trainingPlan1 = new TrainingPlan(Arrays.asList(BenchPress, PullUp));
 
         System.out.println(trainingPlan1);
 

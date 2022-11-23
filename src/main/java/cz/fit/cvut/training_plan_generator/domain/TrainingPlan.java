@@ -1,29 +1,26 @@
 package cz.fit.cvut.training_plan_generator.domain;
 
+import org.springframework.cglib.core.Local;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
-public class TrainingPlan implements DomainEntity<Long> {
-    private final Long id;
-    private Date createdAt;
+public class TrainingPlan implements DomainEntity<LocalDateTime> {
+    private LocalDateTime createdAt = LocalDateTime.now();
     private List<Exercise> exercises;
 
-    public TrainingPlan(Long id, Date createdAt, List<Exercise> exercises) {
-        this.id = id;
-        this.createdAt = createdAt;
+    public TrainingPlan(List<Exercise> exercises) {
         this.exercises = exercises;
     }
 
-    @Override
-    public Long getId() {
-        return id;
-    }
+    public LocalDateTime getId() {return createdAt;}
 
-    public Date getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -38,8 +35,7 @@ public class TrainingPlan implements DomainEntity<Long> {
     @Override
     public String toString() {
         return "TrainingPlan{" +
-                "id=" + id +
-                ", createdAt=" + createdAt +
+                "createdAt=" + createdAt +
                 ", exercises=" + exercises +
                 '}';
     }
