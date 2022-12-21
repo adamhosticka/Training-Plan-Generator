@@ -1,21 +1,27 @@
 package cz.cvut.fit.training_plan_generator.domain;
 
-public class Category implements DomainEntity<Long> {
-    private final Long id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+
+@Entity
+public class Category {
+    @Id @GeneratedValue
+    private Long id;
     private String name;
     private int complexity;
     private int optimal_set_count;
     private int optimal_rep_count;
 
-    public Category(Long id, String name, int complexity, int optimal_set_count, int optimal_rep_count) {
-        this.id = id;
+    public Category() {}
+
+    public Category(String name, int complexity, int optimal_set_count, int optimal_rep_count) {
         this.name = name;
         this.complexity = complexity;
         this.optimal_set_count = optimal_set_count;
         this.optimal_rep_count = optimal_rep_count;
     }
 
-    @Override
     public Long getId() {
         return id;
     }

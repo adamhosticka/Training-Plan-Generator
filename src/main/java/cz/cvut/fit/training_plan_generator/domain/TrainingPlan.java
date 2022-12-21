@@ -2,10 +2,19 @@ package cz.cvut.fit.training_plan_generator.domain;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
-public class TrainingPlan implements DomainEntity<LocalDateTime> {
-    private LocalDateTime createdAt = LocalDateTime.now();
+
+@Entity
+public class TrainingPlan {
+    @Id
+    private final LocalDateTime createdAt = LocalDateTime.now();
+    @ManyToMany
     private List<Exercise> exercises;
+
+    public TrainingPlan() {}
 
     public TrainingPlan(List<Exercise> exercises) {
         this.exercises = exercises;
@@ -15,10 +24,6 @@ public class TrainingPlan implements DomainEntity<LocalDateTime> {
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
     }
 
     public List<Exercise> getExercises() {

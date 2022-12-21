@@ -1,17 +1,23 @@
 package cz.cvut.fit.training_plan_generator.domain;
 
-public class MuscleGroup implements DomainEntity<Long> {
-    private final Long id;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+
+@Entity
+public class MuscleGroup {
+    @Id @GeneratedValue
+    private Long id;
     private String name;
     private int volume;
 
-    public MuscleGroup(Long id, String name, int volume) {
-        this.id = id;
+    public MuscleGroup() {}
+
+    public MuscleGroup(String name, int volume) {
         this.name = name;
         this.volume = volume;
     }
 
-    @Override
     public Long getId() {
         return id;
     }

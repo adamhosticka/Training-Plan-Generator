@@ -11,18 +11,18 @@ public class TestBackend {
     public static void main(String[] args) {
         System.out.println("Hello world!");
 
-        MuscleGroup Chest = new MuscleGroup(1L, "Chest", 3);
-        MuscleGroup Back = new MuscleGroup(2L, "Back", 3);
-        MuscleGroup Legs = new MuscleGroup(3L, "Legs", 3);
-        MuscleGroup Shoulders = new MuscleGroup(4L, "Shoulders", 2);
-        MuscleGroup Triceps = new MuscleGroup(5L, "Triceps", 1);
-        MuscleGroup Biceps = new MuscleGroup(6L, "Biceps", 1);
+        MuscleGroup Chest = new MuscleGroup("Chest", 3);
+        MuscleGroup Back = new MuscleGroup("Back", 3);
+        MuscleGroup Legs = new MuscleGroup("Legs", 3);
+        MuscleGroup Shoulders = new MuscleGroup("Shoulders", 2);
+        MuscleGroup Triceps = new MuscleGroup("Triceps", 1);
+        MuscleGroup Biceps = new MuscleGroup("Biceps", 1);
 
         Set<MuscleGroup> BenchPressMuscleGroups = new HashSet<>(Arrays.asList(Chest, Shoulders, Triceps));
-        Category CompoundCategory = new Category(1L, "Compound Movements", 5, 4, 8);
-        Exercise BenchPress = new Exercise(1L, "Bench Press", CompoundCategory, BenchPressMuscleGroups);
+        Category CompoundCategory = new Category("Compound Movements", 5, 4, 8);
+        Exercise BenchPress = new Exercise("Bench Press", CompoundCategory, BenchPressMuscleGroups);
         Set<MuscleGroup> PullCategory = new HashSet<>(Arrays.asList(Back, Biceps));
-        Exercise PullUp = new Exercise(1L, "Pull Up", CompoundCategory, PullCategory);
+        Exercise PullUp = new Exercise("Pull Up", CompoundCategory, PullCategory);
 //        System.out.println(BenchPress);
 
         TrainingPlan trainingPlan1 = new TrainingPlan(Arrays.asList(BenchPress, PullUp));

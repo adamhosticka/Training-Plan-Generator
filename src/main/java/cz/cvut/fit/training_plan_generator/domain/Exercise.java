@@ -1,20 +1,26 @@
 package cz.cvut.fit.training_plan_generator.domain;
 
+import javax.persistence.*;
 import java.util.*;
-public class Exercise implements DomainEntity<Long> {
-    private final Long id;
+
+@Entity
+public class Exercise {
+    @Id @GeneratedValue
+    private Long id;
     private String name;
+    @ManyToOne
     private Category category;
+    @ManyToMany
     private Set<MuscleGroup> muscleGroups = new HashSet<>();
 
-    public Exercise(Long id, String name, Category category, Set<MuscleGroup> muscleGroups) {
-        this.id = id;
+    public Exercise() {}
+
+    public Exercise(String name, Category category, Set<MuscleGroup> muscleGroups) {
         this.name = name;
         this.category = category;
         this.muscleGroups = muscleGroups;
     }
 
-    @Override
     public Long getId() {
         return id;
     }
