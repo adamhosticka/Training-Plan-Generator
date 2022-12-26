@@ -16,6 +16,9 @@ function Header() {
                         <LinkContainer to="/">
                             <Nav.Link>Create a plan</Nav.Link>
                         </LinkContainer>
+                        <LinkContainer to="/training-plans">
+                            <Nav.Link>Training plans</Nav.Link>
+                        </LinkContainer>
                         <LinkContainer to="/exercises">
                             <Nav.Link>Exercises</Nav.Link>
                         </LinkContainer>

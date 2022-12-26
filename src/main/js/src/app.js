@@ -5,6 +5,7 @@ import {Routes, Route} from "react-router-dom";
 
 import Header from "./components/Header";
 import TrainingPlanGenerator from "./components/TrainingPlanGenerator";
+import TrainingPlans from "./components/TrainingPlans";
 import Exercises from "./components/Exercises";
 import MuscleGroups from "./components/MuscleGroups";
 
@@ -21,6 +22,7 @@ class App extends Component {
                         <Col>
                             <Routes>
                                 <Route index element={<TrainingPlanGenerator/>}/>
+                                <Route path="training-plans" element={<TrainingPlans/>}/>
                                 <Route path="exercises" element={<Exercises/>}/>
                                 <Route path="muscle-groups" element={<MuscleGroups/>}/>
                                 {/*<Route path="*" element={<NoMatch/>}/>*/}
