@@ -1,4 +1,4 @@
-import {Col, Row, Table} from "react-bootstrap";
+import Table from "react-bootstrap/Table";
 import {Component} from "react";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,11 +21,15 @@ class Exercises extends Component{
             <Exercise key={exercise._links.self.href} exercise={exercise}/>
         );
         return (
-            <Table>
-                <Row>
-                    <Col>Název cviku</Col>
-                </Row>
-                {exercises}
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {exercises}
+                </tbody>
             </Table>
         )
     }
@@ -34,9 +38,9 @@ class Exercises extends Component{
 class Exercise extends Component{
     render() {
         return (
-            <Row>
-                <Col>{this.props.exercise.name}</Col>
-            </Row>
+            <tr>
+                <td>{this.props.exercise.name}</td>
+            </tr>
         )
     }
 }

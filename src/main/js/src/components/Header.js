@@ -5,22 +5,22 @@ import {LinkContainer} from 'react-router-bootstrap'
 
 function Header() {
     return (
-        <Navbar bg="light" expand="lg">
+        <Navbar bg="light" expand="lg" className="mb-3">
             <Container>
                 <LinkContainer to="/">
-                    <Navbar.Brand>Trenplán</Navbar.Brand>
+                    <Navbar.Brand>TPG</Navbar.Brand>
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <LinkContainer to="/">
-                            <Nav.Link>Tvorba treninkového plánu</Nav.Link>
+                            <Nav.Link>Create a plan</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/exercises">
-                            <Nav.Link>Cviky</Nav.Link>
+                            <Nav.Link>Exercises</Nav.Link>
                         </LinkContainer>
                         <LinkContainer to="/muscle-groups">
-                            <Nav.Link>Svalové partie</Nav.Link>
+                            <Nav.Link>Muscle groups</Nav.Link>
                         </LinkContainer>
                     </Nav>
                 </Navbar.Collapse>

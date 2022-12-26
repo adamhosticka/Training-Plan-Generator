@@ -1,4 +1,4 @@
-import {Col, Row, Table} from "react-bootstrap";
+import Table from "react-bootstrap/Table";
 import {Component} from "react";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -21,12 +21,16 @@ class MuscleGroups extends Component{
             <MuscleGroup key={muscleGroup._links.self.href} muscleGroup={muscleGroup}/>
         );
         return (
-            <Table>
-                <Row>
-                    <Col>Název svalové partie</Col>
-                    <Col>Objem svalové partie</Col>
-                </Row>
-                {muscleGroups}
+            <Table striped bordered hover>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Volume</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {muscleGroups}
+                </tbody>
             </Table>
         )
     }
@@ -35,10 +39,10 @@ class MuscleGroups extends Component{
 class MuscleGroup extends Component{
     render() {
         return (
-            <Row>
-                <Col>{this.props.muscleGroup.name}</Col>
-                <Col>{this.props.muscleGroup.volume}</Col>
-            </Row>
+            <tr>
+                <td>{this.props.muscleGroup.name}</td>
+                <td>{this.props.muscleGroup.volume}</td>
+            </tr>
         )
     }
 }

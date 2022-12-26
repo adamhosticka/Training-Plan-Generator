@@ -75,7 +75,7 @@ class TrainingPlanGenerator extends Component {
         return (
 
             <div>
-                <h2>Create a plan</h2>
+                <h3>Create a customized plan!</h3>
                 {flashMessage}
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Group className="mb-3" controlId="age">
