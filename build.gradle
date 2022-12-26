@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.7.5'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 	id 'java'
+	id 'org.siouan.frontend-jdk11' version '6.0.0'
 }
 
 group = 'cz.cvut.fit.training_plan_generator'
@@ -22,6 +23,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	runtimeOnly 'org.postgresql:postgresql'
 	implementation group: 'javax.persistence', name: 'javax.persistence-api', version: '2.2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
