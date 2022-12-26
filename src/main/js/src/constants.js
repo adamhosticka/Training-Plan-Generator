@@ -1,4 +1,4 @@
 
-const apiUri = 'http://localhost:8080/api';
+const apiUri = 'http://localhost:8080';
 
 export default apiUri;

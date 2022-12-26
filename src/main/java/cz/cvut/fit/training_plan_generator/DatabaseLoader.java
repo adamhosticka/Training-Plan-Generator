@@ -16,7 +16,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-@Component
+// Uncomment annotation to load db
+//@Component
 public class DatabaseLoader implements CommandLineRunner {
 
     private final ExerciseRepository exerciseRepository;
