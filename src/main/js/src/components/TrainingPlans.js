@@ -19,12 +19,15 @@ class TrainingPlans extends Component{
     }
     render() {
         const trainingPlans = this.state.trainingPlans.map(trainingPlan =>
-            <TrainingPlan key={trainingPlan._links.self.href} trainingPlan={trainingPlan}/>
+            <TrainingPlanRow key={trainingPlan._links.self.href} trainingPlan={trainingPlan}/>
         );
         return (
             <Table striped bordered hover>
                 <thead>
                 <tr>
+                    <th>Name</th>
+                    <th>Expected duration</th>
+                    <th>Goal</th>
                     <th>Created at</th>
                 </tr>
                 </thead>
@@ -36,10 +39,13 @@ class TrainingPlans extends Component{
     }
 }
 
-class TrainingPlan extends Component{
+class TrainingPlanRow extends Component{
     render() {
         return (
             <tr>
+                <td>{this.props.trainingPlan.name}</td>
+                <td>{this.props.trainingPlan.timeToTrain}</td>
+                <td>{this.props.trainingPlan.goal}</td>
                 <td>{new Date(this.props.trainingPlan.id).toLocaleString('cs-CZ', {
                     day: "2-digit",
                     month: "2-digit",

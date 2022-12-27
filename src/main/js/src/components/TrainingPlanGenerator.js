@@ -26,6 +26,7 @@ class TrainingPlanGenerator extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        this.setState({status: null});
         const payload = {...this.state};
         payload.timeToTrain = parseInt(payload.timeToTrain) + 20;
         let checkedMuscleGroups = [];
@@ -36,13 +37,10 @@ class TrainingPlanGenerator extends Component {
         }
         payload.muscleGroups = checkedMuscleGroups;
         console.log(payload);
-        axios.post(apiUri + '/createPlan', payload, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }).then(res => {
-            console.log(res);
+        axios.post(apiUri + '/createPlan', payload).then(res => {
             this.setState({status: res.status})
+        }).catch(e => {
+            this.setState({status: e.response.status})
         });
     }
 
