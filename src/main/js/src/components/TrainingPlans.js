@@ -13,11 +13,11 @@ class TrainingPlans extends Component{
 
     componentDidMount() {
         axios.get(apiUri + '/trainingPlans').then(response => {
-            this.setState({trainingPlans: response.data._embedded.trainingPlans});
+            console.log(response);
+            this.setState({trainingPlans: response.data._embedded.trainingPlans.reverse()});
         });
     }
     render() {
-        console.log(this.state);
         const trainingPlans = this.state.trainingPlans.map(trainingPlan =>
             <TrainingPlan key={trainingPlan._links.self.href} trainingPlan={trainingPlan}/>
         );

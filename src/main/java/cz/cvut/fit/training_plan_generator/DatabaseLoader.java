@@ -68,7 +68,11 @@ public class DatabaseLoader implements CommandLineRunner {
         );
         this.exerciseRepository.saveAll(exercises);
 
-        TrainingPlan chestFocusTrainingPlan = new TrainingPlan(Arrays.asList(benchPress, chestPress));
+        TrainingPlan chestFocusTrainingPlan = new TrainingPlan(
+                "Chest focus", 18, "Male", 20, "Strength",
+                Arrays.asList(Chest),
+                Arrays.asList(benchPress, chestPress)
+        );
         List<TrainingPlan> trainingPlans = Arrays.asList(
                 chestFocusTrainingPlan
         );

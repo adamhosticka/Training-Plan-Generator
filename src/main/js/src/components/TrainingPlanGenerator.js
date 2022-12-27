@@ -11,11 +11,13 @@ class TrainingPlanGenerator extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            name: '',
             age: 18,
             gender: 'Male',
             muscleGroups: [],
             timeToTrain: 40,
-            goal: 'Hypertrophy'
+            goal: 'Hypertrophy',
+            status: null,
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,18 +28,28 @@ class TrainingPlanGenerator extends Component {
         e.preventDefault();
         const payload = {...this.state};
         payload.timeToTrain = parseInt(payload.timeToTrain) + 20;
+        let checkedMuscleGroups = [];
+        for(const mG of payload.muscleGroups) {
+            if(mG.checked) {
+                checkedMuscleGroups.push(mG.detail);
+            }
+        }
+        payload.muscleGroups = checkedMuscleGroups;
         console.log(payload);
-        // axios.post(`http://localhost:8080/api/authors`, payload)
-        //     .then(res => {
-        //         let authors =
-        //             this.setState({status: res.status})
-        //     })
+        axios.post(apiUri + '/createPlan', payload, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(res => {
+            console.log(res);
+            this.setState({status: res.status})
+        });
     }
 
     handleCheck(muscleGroup) {
         let muscleGroups = [...this.state.muscleGroups];
         for(const mG of muscleGroups) {
-            if (mG.link === muscleGroup.link) {
+            if (mG.detail._links.self === muscleGroup.detail._links.self) {
                 mG.checked = !mG.checked;
             }
         }
@@ -48,8 +60,7 @@ class TrainingPlanGenerator extends Component {
         axios.get(apiUri + '/muscleGroups').then(response => {
             this.setState({muscleGroups:
                 response.data._embedded.muscleGroups.map(muscleGroup => ({
-                        name: muscleGroup.name,
-                        link: muscleGroup._links.self,
+                        detail: muscleGroup,
                         checked: false
                 }))
             });
@@ -78,6 +89,11 @@ class TrainingPlanGenerator extends Component {
                 <h3>Create a customized plan!</h3>
                 {flashMessage}
                 <Form onSubmit={this.handleSubmit}>
+                    <Form.Group className="mb-3" controlId="name">
+                        <Form.Label>Plan name</Form.Label>
+                        <Form.Control type="text" placeholder="Plan name" value={this.state.name}
+                                      onChange={(e) => this.setState({name: e.target.value})}/>
+                    </Form.Group>
                     <Form.Group className="mb-3" controlId="age">
                         <Form.Label>Age</Form.Label>
                         <Form.Control type="number" min={15} max={100} placeholder="Age" value={this.state.age}
@@ -95,7 +111,7 @@ class TrainingPlanGenerator extends Component {
                         <Form.Label>Muscle groups</Form.Label>
                         <div>
                             {this.state.muscleGroups.map(muscleGroup => (
-                                <Form.Check inline key={muscleGroup.name} label={muscleGroup.name} type="checkbox"
+                                <Form.Check inline id={muscleGroup.detail.name} label={muscleGroup.detail.name} type="checkbox"
                                     checked={muscleGroup.checked}
                                     onChange={(e) => this.handleCheck(muscleGroup)}
                                 />
