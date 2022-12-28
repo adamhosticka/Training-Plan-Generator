@@ -1,5 +1,6 @@
 import Table from "react-bootstrap/Table";
 import {Component} from "react";
+import {LinkContainer} from "react-router-bootstrap";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -42,18 +43,20 @@ class TrainingPlans extends Component{
 class TrainingPlanRow extends Component{
     render() {
         return (
-            <tr>
-                <td>{this.props.trainingPlan.name}</td>
-                <td>{this.props.trainingPlan.timeToTrain}</td>
-                <td>{this.props.trainingPlan.goal}</td>
-                <td>{new Date(this.props.trainingPlan.id).toLocaleString('cs-CZ', {
-                    day: "2-digit",
-                    month: "2-digit",
-                    year: "numeric",
-                    hour: "2-digit",
-                    minute: '2-digit'
-                })}</td>
-            </tr>
+            <LinkContainer style={{cursor: 'pointer'}} to={"/training-plans/" + this.props.trainingPlan.id}>
+                <tr>
+                    <td>{this.props.trainingPlan.name}</td>
+                    <td>{this.props.trainingPlan.timeToTrain}</td>
+                    <td>{this.props.trainingPlan.goal}</td>
+                    <td>{new Date(this.props.trainingPlan.createdAt).toLocaleString('cs-CZ', {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                        hour: "2-digit",
+                        minute: '2-digit'
+                    })}</td>
+                </tr>
+            </LinkContainer>
         )
     }
 }

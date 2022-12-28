@@ -3,6 +3,7 @@ package cz.cvut.fit.training_plan_generator.domain;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
@@ -10,7 +11,8 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 public class TrainingPlan {
-    @Id
+    @Id @GeneratedValue
+    private Long id;
     private final LocalDateTime createdAt = LocalDateTime.now();
     @NotBlank
     private String name;
@@ -45,7 +47,7 @@ public class TrainingPlan {
         this.exercises = exercises;
     }
 
-    public LocalDateTime getId() {return createdAt;}
+    public Long getId() {return id;}
 
     public LocalDateTime getCreatedAt() {
         return createdAt;

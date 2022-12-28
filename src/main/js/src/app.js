@@ -10,6 +10,7 @@ import Exercises from "./components/Exercises";
 import MuscleGroups from "./components/MuscleGroups";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import TrainingPlan from "./components/TrainingPlan";
 
 
 class App extends Component {
@@ -23,6 +24,7 @@ class App extends Component {
                             <Routes>
                                 <Route index element={<TrainingPlanGenerator/>}/>
                                 <Route path="training-plans" element={<TrainingPlans/>}/>
+                                <Route path="training-plans/:planId" element={<TrainingPlan/>}/>
                                 <Route path="exercises" element={<Exercises/>}/>
                                 <Route path="muscle-groups" element={<MuscleGroups/>}/>
                                 {/*<Route path="*" element={<NoMatch/>}/>*/}
