@@ -18,6 +18,7 @@ class TrainingPlanGenerator extends Component {
             timeToTrain: 40,
             goal: 'Hypertrophy',
             status: null,
+            createdPlanId: null,
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,9 +39,12 @@ class TrainingPlanGenerator extends Component {
         payload.muscleGroups = checkedMuscleGroups;
         console.log(payload);
         axios.post(apiUri + '/createPlan', payload).then(res => {
-            this.setState({status: res.status})
+            this.setState({
+                status: res.status,
+                createdPlanId: res.data.id
+            });
         }).catch(e => {
-            this.setState({status: e.response.status})
+            this.setState({status: e.response.status});
         });
     }
 
@@ -74,6 +78,11 @@ class TrainingPlanGenerator extends Component {
         if (this.state.status === 201) {
             flashMessage = <Alert key={"success"} variant={"success"}>
                 Plan created
+                <div>
+                    <a href={"/training-plans/" + this.state.createdPlanId}>
+                        Click to view plan.
+                    </a>
+                </div>
             </Alert>
         } else if (this.state.status != null) {
             flashMessage = <Alert key={"danger"} variant={"danger"}>
