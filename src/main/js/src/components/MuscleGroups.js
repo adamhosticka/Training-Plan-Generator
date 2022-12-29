@@ -3,7 +3,7 @@ import {Component} from "react";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import apiUri from '../constants';
+import apiUri from '../helper/constants';
 
 class MuscleGroups extends Component{
     constructor(props) {

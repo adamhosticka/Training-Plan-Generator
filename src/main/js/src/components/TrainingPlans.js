@@ -6,7 +6,7 @@ import {Trash3} from "react-bootstrap-icons";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import apiUri from '../constants';
+import apiUri from '../helper/constants';
 
 class TrainingPlans extends Component{
     constructor(props) {

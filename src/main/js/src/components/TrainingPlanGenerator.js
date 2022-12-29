@@ -3,7 +3,7 @@ import {Alert, Button, Form} from "react-bootstrap";
 // import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
-import apiUri from "../constants";
+import apiUri from "../helper/constants";
 
 
 class TrainingPlanGenerator extends Component {

@@ -7,7 +7,9 @@ import html2canvas from "html2canvas";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import apiUri from '../constants';
+import styleMuscleGroups from '../helper/StyleMuscleGroups';
+import apiUri from '../helper/constants';
+import LoadingScreen from "./LoadingScreen";
 
 function withParams(Component) {
     return props => <Component {...props} params={useParams()} />;
@@ -17,6 +19,7 @@ class TrainingPlan extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            loading: true,
             planId: null,
             trainingPlan: {},
             muscleGroups: [],
@@ -30,6 +33,7 @@ class TrainingPlan extends Component{
         try {
             trainingPlanResponse = await axios.get(apiUri + '/trainingPlans/' + planId);
         } catch(e) {
+            this.setState({loading: false, planId: -1})
             return;
         }
         const [muscleGroupsResponse, exercisesResponse] = await Promise.all([
@@ -46,11 +50,15 @@ class TrainingPlan extends Component{
             trainingPlan: trainingPlanResponse.data,
             muscleGroups: muscleGroupsResponse.data._embedded.muscleGroups,
             exercises: exercisesResponse.data._embedded.exercises,
-            planId: planId
+            planId: planId,
+            loading: false,
         });
     }
     render() {
-        if(this.state.planId === null) {
+        if(this.state.loading === true) {
+            return (<LoadingScreen/>)
+        }
+        if(this.state.planId === -1) {
             return (
                 <div>Couldn't load training plan...</div>
             )
@@ -97,7 +105,7 @@ class TrainingPlan extends Component{
                         </tbody>
                     </Table>
                 </div>
-                <Button variant="primary" onClick={generatePDF} type="button" className={"float-end"}>Export PDF</Button>
+                <Button variant="primary" onClick={generatePDF} type="button" className={"float-end mb-4"}>Export PDF</Button>
             </div>
         )
     }
@@ -128,16 +136,6 @@ const generatePDF = async () => {
             pdf.save("training-plan.pdf");
         })
     ;
-}
-
-function styleMuscleGroups(muscleGroups) {
-    let res = "";
-    let muscleGroupsSorted = muscleGroups.sort((x, y) => y.volume - x.volume);
-    for(let i = 0; i < muscleGroupsSorted.length; i++) {
-        if(i !== 0) {res += " | "}
-        res += muscleGroupsSorted[i].name;
-    }
-    return res;
 }
 
 export default withParams(TrainingPlan);
