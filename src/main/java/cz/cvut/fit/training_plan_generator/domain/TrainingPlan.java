@@ -2,11 +2,13 @@ package cz.cvut.fit.training_plan_generator.domain;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 
 
 @Entity
@@ -21,14 +23,15 @@ public class TrainingPlan {
     private Integer timeToTrain;
     private String goal;
     @ManyToMany
-    private List<MuscleGroup> muscleGroups;
+    @NotEmpty
+    private Set<MuscleGroup> muscleGroups;
 
     @ManyToMany
     private List<Exercise> exercises;
 
     public TrainingPlan() {}
 
-    public TrainingPlan(String name, Integer age, String gender, Integer timeToTrain, String goal, List<MuscleGroup> muscleGroups) {
+    public TrainingPlan(String name, Integer age, String gender, Integer timeToTrain, String goal, Set<MuscleGroup> muscleGroups) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -37,7 +40,7 @@ public class TrainingPlan {
         this.muscleGroups = muscleGroups;
     }
 
-    public TrainingPlan(String name, Integer age, String gender, Integer timeToTrain, String goal, List<MuscleGroup> muscleGroups, List<Exercise> exercises) {
+    public TrainingPlan(String name, Integer age, String gender, Integer timeToTrain, String goal, Set<MuscleGroup> muscleGroups, List<Exercise> exercises) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -93,11 +96,11 @@ public class TrainingPlan {
         this.goal = goal;
     }
 
-    public List<MuscleGroup> getMuscleGroups() {
+    public Set<MuscleGroup> getMuscleGroups() {
         return muscleGroups;
     }
 
-    public void setMuscleGroups(List<MuscleGroup> muscleGroups) {
+    public void setMuscleGroups(Set<MuscleGroup> muscleGroups) {
         this.muscleGroups = muscleGroups;
     }
 

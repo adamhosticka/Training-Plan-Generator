@@ -78,7 +78,7 @@ class TrainingPlanRow extends Component{
     render() {
         return (
             <LinkContainer style={{cursor: 'pointer'}} to={"/training-plans/" + this.props.trainingPlan.id}>
-                <tr key={this.props.trainingPlan.id}>
+                <tr key={this.props.trainingPlan.id} className="align-middle">
                     <td>{this.props.trainingPlan.name}</td>
                     <td>{this.props.trainingPlan.timeToTrain} minutes</td>
                     <td>{this.props.trainingPlan.goal}</td>

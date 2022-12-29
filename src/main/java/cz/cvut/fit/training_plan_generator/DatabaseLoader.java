@@ -55,23 +55,52 @@ public class DatabaseLoader implements CommandLineRunner {
         List<Category> categories = Arrays.asList(compoundCategory, isolationExercisesStrength, isolationExercisesHypertrophy);
         this.categoryRepository.saveAll(categories);
 
-        Exercise benchPress = new Exercise("Bench Press", compoundCategory, new HashSet<>(Arrays.asList(Chest, Shoulders, Triceps)));
+        Exercise barbellBenchpress = new Exercise("Barbell Bench Press", compoundCategory, new HashSet<>(Arrays.asList(Chest, Shoulders, Triceps)));
+        Exercise inclineBarbellBenchPress = new Exercise("Incline Barbell Bench Press", compoundCategory, new HashSet<>(Arrays.asList(Chest, Shoulders, Triceps)));
+        Exercise barbellRow = new Exercise("Barbell Row", compoundCategory, new HashSet<>(Arrays.asList(Back, Biceps)));
+        Exercise barbellShoulderPress = new Exercise("Barbell Shoulder Press", compoundCategory, new HashSet<>(Arrays.asList(Shoulders, Triceps)));
         Exercise deadlift = new Exercise("Deadlift", compoundCategory, new HashSet<>(Arrays.asList(Back, Legs)));
-        Exercise latPulldown = new Exercise("Lat Pulldown", isolationExercisesStrength, new HashSet<>(Arrays.asList(Back, Biceps)));
-        Exercise legPress = new Exercise("Leg Press", isolationExercisesStrength, new HashSet<>(Arrays.asList(Legs)));
+        Exercise bulgarianDeadlift = new Exercise("Deadlift", compoundCategory, new HashSet<>(Arrays.asList(Back, Legs)));
+        Exercise barbellSquat = new Exercise("Barbell Squat", compoundCategory, new HashSet<>(Arrays.asList(Legs)));
+
+
+        Exercise dumbbellBenchPress = new Exercise("Dumbbell Bench Press", isolationExercisesStrength, new HashSet<>(Arrays.asList(Chest, Shoulders, Triceps)));
+        Exercise inclineDumbbellBenchPress = new Exercise("Incline Dumbbell Bench Press", isolationExercisesStrength, new HashSet<>(Arrays.asList(Chest, Shoulders, Triceps)));
         Exercise chestPress = new Exercise("Chest Press", isolationExercisesStrength, new HashSet<>(Arrays.asList(Chest, Shoulders)));
+        Exercise dips = new Exercise("Dips", isolationExercisesStrength, new HashSet<>(Arrays.asList(Chest, Shoulders, Triceps)));
+        Exercise latPulldown = new Exercise("Lat Pulldown", isolationExercisesStrength, new HashSet<>(Arrays.asList(Back)));
+        Exercise dumbbellRow = new Exercise("Dumbbell Row", isolationExercisesStrength, new HashSet<>(Arrays.asList(Back)));
+        Exercise legPress = new Exercise("Leg Press", isolationExercisesStrength, new HashSet<>(Arrays.asList(Legs)));
+        Exercise bulgarianSplitSquat = new Exercise("Bulgarian Split Squat", isolationExercisesStrength, new HashSet<>(Arrays.asList(Legs)));
+        Exercise hackSquat = new Exercise("Hack Squat", isolationExercisesStrength, new HashSet<>(Arrays.asList(Legs)));
+        Exercise dumbbellShoulderPress = new Exercise("Dumbbell Shoulder Press", isolationExercisesStrength, new HashSet<>(Arrays.asList(Shoulders)));
+        Exercise dumbbellOverheadTricepExtension = new Exercise("Dumbbell Overhead Tricep Extension", isolationExercisesStrength, new HashSet<>(Arrays.asList(Triceps)));
+        Exercise barbellBicepCurl = new Exercise("Barbell Bicep Curl", isolationExercisesStrength, new HashSet<>(Arrays.asList(Biceps)));
+
+
+        Exercise chestFly = new Exercise("Chest Fly", isolationExercisesHypertrophy, new HashSet<>(Arrays.asList(Chest)));
+        Exercise cableChestFly = new Exercise("Cable Chest Fly", isolationExercisesHypertrophy, new HashSet<>(Arrays.asList(Chest)));
+        Exercise cableRow = new Exercise("Cable Row", isolationExercisesHypertrophy, new HashSet<>(Arrays.asList(Back)));
+        Exercise legCurl = new Exercise("Leg Curl", isolationExercisesHypertrophy, new HashSet<>(Arrays.asList(Legs)));
+        Exercise legExtension = new Exercise("Leg Extension", isolationExercisesHypertrophy, new HashSet<>(Arrays.asList(Legs)));
         Exercise lateralRaises = new Exercise("Lateral Raises", isolationExercisesHypertrophy, new HashSet<>(Arrays.asList(Shoulders)));
-        Exercise bicepCurl = new Exercise("Bicep Curl", isolationExercisesHypertrophy, new HashSet<>(Arrays.asList(Biceps)));
-        Exercise tricepPulldown = new Exercise("Tricep Pulldown", isolationExercisesHypertrophy, new HashSet<>(Arrays.asList(Triceps)));
+        Exercise rearDeltFly = new Exercise("Rear Delt Fly", isolationExercisesHypertrophy, new HashSet<>(Arrays.asList(Shoulders)));
+        Exercise dumbbellBicepCurl = new Exercise("Dumbbell Bicep Curl", isolationExercisesHypertrophy, new HashSet<>(Arrays.asList(Biceps)));
+        Exercise dumbbellHammerCurl = new Exercise("Dumbbel Hammer Curl", isolationExercisesHypertrophy, new HashSet<>(Arrays.asList(Biceps)));
+        Exercise tricepRopePushdown = new Exercise("Tricep Rope Pushdown", isolationExercisesHypertrophy, new HashSet<>(Arrays.asList(Triceps)));
+        Exercise cableOverheadTricepExtension = new Exercise("Cable Overhead Tricep Extension", isolationExercisesHypertrophy, new HashSet<>(Arrays.asList(Triceps)));
+
         List<Exercise> exercises = Arrays.asList(
-                benchPress, deadlift, latPulldown, legPress, chestPress, lateralRaises, bicepCurl, tricepPulldown
+                barbellBenchpress, inclineBarbellBenchPress, barbellRow, barbellShoulderPress, deadlift, bulgarianDeadlift, barbellSquat,
+                dumbbellBenchPress, inclineDumbbellBenchPress, chestPress, dips, latPulldown, dumbbellRow, cableRow, legPress, bulgarianSplitSquat, hackSquat, dumbbellShoulderPress, dumbbellOverheadTricepExtension, barbellBicepCurl,
+                chestFly, cableChestFly, legCurl, legExtension, lateralRaises, rearDeltFly, dumbbellBicepCurl, dumbbellHammerCurl, tricepRopePushdown, cableOverheadTricepExtension
         );
         this.exerciseRepository.saveAll(exercises);
 
         TrainingPlan chestFocusTrainingPlan = new TrainingPlan(
                 "Chest focus", 18, "Male", 20, "Strength",
-                Arrays.asList(Chest),
-                Arrays.asList(benchPress, chestPress)
+                new HashSet<>(Arrays.asList(Chest)),
+                Arrays.asList(barbellBenchpress, inclineDumbbellBenchPress, chestPress, chestFly)
         );
         List<TrainingPlan> trainingPlans = Arrays.asList(
                 chestFocusTrainingPlan

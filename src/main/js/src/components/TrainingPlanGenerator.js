@@ -33,10 +33,13 @@ class TrainingPlanGenerator extends Component {
         let checkedMuscleGroups = [];
         for(const mG of payload.muscleGroups) {
             if(mG.checked) {
-                checkedMuscleGroups.push(mG.detail);
+                checkedMuscleGroups.push(mG.detail.id);
             }
         }
-        payload.muscleGroups = checkedMuscleGroups;
+        payload.muscleGroupIds = checkedMuscleGroups;
+        delete payload.muscleGroups;
+        delete payload.status;
+        delete payload.createdPlanId;
         console.log(payload);
         axios.post(apiUri + '/createPlan', payload).then(res => {
             this.setState({
@@ -44,6 +47,7 @@ class TrainingPlanGenerator extends Component {
                 createdPlanId: res.data.id
             });
         }).catch(e => {
+            console.log(e);
             this.setState({status: e.response.status});
         });
     }

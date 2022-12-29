@@ -3,6 +3,7 @@ package cz.cvut.fit.training_plan_generator.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
+import java.util.Objects;
 
 @Entity
 public class MuscleGroup {
@@ -36,6 +37,18 @@ public class MuscleGroup {
 
     public void setVolume(int volume) {
         this.volume = volume;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MuscleGroup that)) return false;
+        return getId().equals(that.getId()) && Objects.equals(getName(), that.getName());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getName());
     }
 
     @Override
