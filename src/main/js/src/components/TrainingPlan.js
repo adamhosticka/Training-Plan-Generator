@@ -26,7 +26,12 @@ class TrainingPlan extends Component{
 
     async componentDidMount() {
         const {planId} = this.props.params;
-        const trainingPlanResponse = await axios.get(apiUri + '/trainingPlans/' + planId);
+        let trainingPlanResponse = null;
+        try {
+            trainingPlanResponse = await axios.get(apiUri + '/trainingPlans/' + planId);
+        } catch(e) {
+            return;
+        }
         const [muscleGroupsResponse, exercisesResponse] = await Promise.all([
             axios.get(trainingPlanResponse.data._links.muscleGroups.href),
             axios.get(trainingPlanResponse.data._links.exercises.href),
@@ -45,6 +50,11 @@ class TrainingPlan extends Component{
         });
     }
     render() {
+        if(this.state.planId === null) {
+            return (
+                <div>Couldn't load training plan...</div>
+            )
+        }
         const exercises = this.state.exercises.map(exercise =>
             <ExerciseRow key={exercise._links.self.href} exercise={exercise}/>
         );
