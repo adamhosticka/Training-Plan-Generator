@@ -16,17 +16,13 @@ class Exercises extends Component{
         };
     }
 
-    async componentDidMount() {
-        let exercisesResponse = await axios.get(apiUri + '/exercises');
-        for(let exercise of exercisesResponse.data._embedded.exercises) {
-            const catRes = await axios.get(exercise._links.category.href);
-            exercise.category = catRes.data;
-            const musRes = await axios.get(exercise._links.muscleGroups.href);
-            exercise.muscleGroups = musRes.data._embedded.muscleGroups;
-        }
-        this.setState({
-            loading: false,
-            exercises: exercisesResponse.data._embedded.exercises,
+    componentDidMount() {
+        axios.get(apiUri + '/exercises/detail').then(res => {
+            console.log(res);
+            this.setState({
+                loading: false,
+                exercises: res.data,
+            });
         });
     }
     render() {
@@ -34,7 +30,7 @@ class Exercises extends Component{
             return (<LoadingScreen/>)
         }
         const exercises = this.state.exercises.map(exercise =>
-            <Exercise key={exercise._links.self.href} exercise={exercise}/>
+            <Exercise key={exercise.id} exercise={exercise}/>
         );
         return (
             <Table striped bordered hover>
