@@ -50,6 +50,18 @@ public class Exercise {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Exercise exercise)) return false;
+        return Objects.equals(id, exercise.id) && Objects.equals(name, exercise.name) && Objects.equals(category, exercise.category);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, category);
+    }
+
+    @Override
     public String toString() {
         return "Exercise{" +
                 "id=" + id +

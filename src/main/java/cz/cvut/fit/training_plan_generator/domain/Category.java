@@ -3,6 +3,7 @@ package cz.cvut.fit.training_plan_generator.domain;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Entity;
+import java.util.Objects;
 
 @Entity
 public class Category {
@@ -56,6 +57,18 @@ public class Category {
 
     public void setOptimal_rep_count(int optimal_rep_count) {
         this.optimal_rep_count = optimal_rep_count;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Category category)) return false;
+        return complexity == category.complexity && optimal_set_count == category.optimal_set_count && optimal_rep_count == category.optimal_rep_count && Objects.equals(id, category.id) && Objects.equals(name, category.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, complexity, optimal_set_count, optimal_rep_count);
     }
 
     @Override

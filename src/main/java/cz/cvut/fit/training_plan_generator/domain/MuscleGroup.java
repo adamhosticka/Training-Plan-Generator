@@ -43,12 +43,12 @@ public class MuscleGroup {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof MuscleGroup that)) return false;
-        return getId().equals(that.getId()) && Objects.equals(getName(), that.getName());
+        return volume == that.volume && id.equals(that.id) && Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName());
+        return Objects.hash(id, name, volume);
     }
 
     @Override

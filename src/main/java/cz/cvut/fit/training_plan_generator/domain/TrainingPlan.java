@@ -2,6 +2,7 @@ package cz.cvut.fit.training_plan_generator.domain;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -110,6 +111,18 @@ public class TrainingPlan {
 
     public void setExercises(List<Exercise> exercises) {
         this.exercises = exercises;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TrainingPlan that)) return false;
+        return Objects.equals(id, that.id) && Objects.equals(createdAt, that.createdAt) && Objects.equals(name, that.name) && Objects.equals(age, that.age) && Objects.equals(gender, that.gender) && Objects.equals(timeToTrain, that.timeToTrain) && Objects.equals(goal, that.goal) && Objects.equals(muscleGroups, that.muscleGroups) && Objects.equals(exercises, that.exercises);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, createdAt, name, age, gender, timeToTrain, goal);
     }
 
     @Override
