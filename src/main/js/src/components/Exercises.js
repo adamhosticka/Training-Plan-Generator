@@ -21,7 +21,7 @@ class Exercises extends Component{
             console.log(res);
             this.setState({
                 loading: false,
-                exercises: res.data,
+                exercises: res.data.sort((x, y) => x.name > y.name),
             });
         });
     }
