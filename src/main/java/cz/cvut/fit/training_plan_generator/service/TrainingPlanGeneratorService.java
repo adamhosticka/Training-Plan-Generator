@@ -64,7 +64,7 @@ public class TrainingPlanGeneratorService {
             startIndex = Math.max(0, endIndex - nrOfExercises);
         } else {
             startIndex = 0;
-            endIndex = nrOfExercises;
+            endIndex = Math.min(nrOfExercises, planExercises.size());
         }
         return planExercises.subList(startIndex, endIndex);
     }

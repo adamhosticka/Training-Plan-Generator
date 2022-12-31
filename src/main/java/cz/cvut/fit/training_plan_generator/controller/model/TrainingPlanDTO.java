@@ -3,6 +3,7 @@ package cz.cvut.fit.training_plan_generator.controller.model;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
+import java.util.Objects;
 
 public class TrainingPlanDTO {
     private String name;
@@ -69,6 +70,18 @@ public class TrainingPlanDTO {
 
     public void setMuscleGroupIds(List<Long> muscleGroupIds) {
         this.muscleGroupIds = muscleGroupIds;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TrainingPlanDTO that)) return false;
+        return Objects.equals(name, that.name) && Objects.equals(age, that.age) && Objects.equals(gender, that.gender) && Objects.equals(timeToTrain, that.timeToTrain) && Objects.equals(goal, that.goal) && Objects.equals(muscleGroupIds, that.muscleGroupIds);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, gender, timeToTrain, goal, muscleGroupIds);
     }
 
     @Override
