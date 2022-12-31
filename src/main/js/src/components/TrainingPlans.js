@@ -7,11 +7,13 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import apiUri from '../helper/constants';
+import LoadingScreen from "./LoadingScreen";
 
 class TrainingPlans extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            loading: true,
             trainingPlans: [],
             deletionStatus: null,
         };
@@ -19,7 +21,10 @@ class TrainingPlans extends Component{
 
     componentDidMount() {
         axios.get(apiUri + '/trainingPlans').then(response => {
-            this.setState({trainingPlans: response.data._embedded.trainingPlans.reverse()});
+            this.setState({
+                loading: false,
+                trainingPlans: response.data._embedded.trainingPlans.reverse(),
+            });
         });
     }
 
@@ -39,6 +44,9 @@ class TrainingPlans extends Component{
     }
 
     render() {
+        if(this.state.loading === true) {
+            return (<LoadingScreen/>)
+        }
         let flashMessage;
         if (this.state.deletionStatus === 204) {
             flashMessage = <Alert key={"success"} variant={"success"}>

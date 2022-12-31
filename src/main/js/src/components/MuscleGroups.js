@@ -1,5 +1,6 @@
 import Table from "react-bootstrap/Table";
 import {Component} from "react";
+import LoadingScreen from "./LoadingScreen";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -8,15 +9,24 @@ import apiUri from '../helper/constants';
 class MuscleGroups extends Component{
     constructor(props) {
         super(props);
-        this.state = {muscleGroups: []};
+        this.state = {
+            loading: true,
+            muscleGroups: [],
+        };
     }
 
     componentDidMount() {
         axios.get(apiUri + '/muscleGroups').then(response => {
-            this.setState({muscleGroups: response.data._embedded.muscleGroups});
+            this.setState({
+                loading: false,
+                muscleGroups: response.data._embedded.muscleGroups,
+            });
         });
     }
     render() {
+        if(this.state.loading === true) {
+            return (<LoadingScreen/>)
+        }
         const muscleGroups = this.state.muscleGroups.map(muscleGroup =>
             <MuscleGroup key={muscleGroup._links.self.href} muscleGroup={muscleGroup}/>
         );
