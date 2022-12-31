@@ -13,14 +13,11 @@ import cz.cvut.fit.training_plan_generator.domain.Category;
 import cz.cvut.fit.training_plan_generator.domain.Exercise;
 import cz.cvut.fit.training_plan_generator.domain.MuscleGroup;
 import cz.cvut.fit.training_plan_generator.domain.TrainingPlan;
-import cz.cvut.fit.training_plan_generator.service.TrainingPlanGeneratorService;
-import org.junit.After;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -51,7 +48,7 @@ public class TrainingPlanGeneratorControllerSystemTest {
     private TrainingPlanRepository trainingPlanRepository;
 
     @AfterEach
-    void clearRepositories() {
+    public void clearRepositories() {
         this.trainingPlanRepository.deleteAll();
         this.exerciseRepository.deleteAll();
         this.muscleGroupRepository.deleteAll();
@@ -59,7 +56,7 @@ public class TrainingPlanGeneratorControllerSystemTest {
     }
 
     @Test
-    void createPlanIfPlanValid() throws Exception {
+    public void createPlanIfPlanValid() throws Exception {
         MuscleGroup chest = this.muscleGroupRepository.save(new MuscleGroup("Chest", 3));
         Category compound = this.categoryRepository.save(new Category("Compound", 3, 5, 5));
         Exercise benchPress = this.exerciseRepository.save(new Exercise("Bench Press", compound, new HashSet<>(List.of(chest))));
@@ -90,7 +87,7 @@ public class TrainingPlanGeneratorControllerSystemTest {
         assertEquals(List.of(benchPress), correctPlan.getExercises());
     }
 
-    MvcResult getMvcResult(String postBody, int expectedStatus) throws Exception {
+    public MvcResult getMvcResult(String postBody, int expectedStatus) throws Exception {
         return mockMvc.perform(MockMvcRequestBuilders
                         .post("/createPlan")
                         .contentType(MediaType.APPLICATION_JSON)

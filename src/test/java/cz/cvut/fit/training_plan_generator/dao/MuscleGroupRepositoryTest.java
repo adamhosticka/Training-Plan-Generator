@@ -21,19 +21,19 @@ public class MuscleGroupRepositoryTest {
     private MuscleGroupRepository muscleGroupRepository;
 
     @AfterEach
-    void clearRepository() {
+    public void clearRepository() {
         muscleGroupRepository.deleteAll();
     }
 
     @Test
-    void muscleGroupSave() {
+    public void muscleGroupSave() {
         MuscleGroup tongue = new MuscleGroup("Tongue", 99);
         this.muscleGroupRepository.save(tongue);
         assertEquals(1, muscleGroupRepository.count());
     }
 
     @Test
-    void muscleGroupSaveAllFindAll() {
+    public void muscleGroupSaveAllFindAll() {
         MuscleGroup tongue = new MuscleGroup("Tongue", 99);
         MuscleGroup calf = new MuscleGroup("Calf", 0);
         this.muscleGroupRepository.saveAll(Arrays.asList(tongue, calf));
@@ -41,7 +41,7 @@ public class MuscleGroupRepositoryTest {
     }
 
     @Test
-    void muscleGroupExistsByIdFindById() {
+    public void muscleGroupExistsByIdFindById() {
         MuscleGroup tongue = this.muscleGroupRepository.save(new MuscleGroup("Tongue", 99));
         MuscleGroup calf = this.muscleGroupRepository.save(new MuscleGroup("Calf", 0));
 

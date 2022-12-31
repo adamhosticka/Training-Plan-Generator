@@ -27,14 +27,14 @@ public class ExerciseRepositoryTest {
     private ExerciseRepository exerciseRepository;
 
     @AfterEach
-    void clearRepository() {
+    public void clearRepository() {
         exerciseRepository.deleteAll();
         muscleGroupRepository.deleteAll();
         categoryRepository.deleteAll();
     }
 
     @Test
-    void muscleGroupExistsByIdFindById() {
+    public void muscleGroupExistsByIdFindById() {
         MuscleGroup legs = this.muscleGroupRepository.save(new MuscleGroup("Legs", 3));
         MuscleGroup back = this.muscleGroupRepository.save(new MuscleGroup("Back", 3));
         MuscleGroup biceps = this.muscleGroupRepository.save(new MuscleGroup("Biceps", 1));
