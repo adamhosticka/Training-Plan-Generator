@@ -62,7 +62,7 @@ public class TrainingPlanGeneratorControllerSystemTest {
         Exercise benchPress = this.exerciseRepository.save(new Exercise("Bench Press", compound, new HashSet<>(List.of(chest))));
         TrainingPlanDTO planDTOBlankName = new TrainingPlanDTO("", 18, "Male", 44, "Strength", List.of(chest.getId()));
         TrainingPlanDTO planDTONoMGs = new TrainingPlanDTO("NoMGs", 18, "Male", 44, "Strength", List.of());
-        TrainingPlanDTO planDTOCorrect = new TrainingPlanDTO("Correct plan", 18, "Male", 44, "Strength", List.of(chest.getId()));
+        TrainingPlanDTO planDTOValid = new TrainingPlanDTO("Valid plan", 18, "Male", 44, "Strength", List.of(chest.getId()));
 
         ObjectMapper mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
@@ -72,19 +72,19 @@ public class TrainingPlanGeneratorControllerSystemTest {
         getMvcResult(blankNameBody, 400);
         getMvcResult(noMGsBody, 400);
 
-        String correctPlanBody = mapper.writeValueAsString(planDTOCorrect);
-        MvcResult correctPlanResult = getMvcResult(correctPlanBody, 201);
+        String validPlanBody = mapper.writeValueAsString(planDTOValid);
+        MvcResult validPlanResult = getMvcResult(validPlanBody, 201);
 
-        String correctPlanResponseBody = correctPlanResult.getResponse().getContentAsString();
-        TrainingPlan correctPlan = mapper.readValue(correctPlanResponseBody, TrainingPlan.class);
+        String validPlanResponseBody = validPlanResult.getResponse().getContentAsString();
+        TrainingPlan validPlan = mapper.readValue(validPlanResponseBody, TrainingPlan.class);
 
-        assertNotNull(correctPlan.getCreatedAt());
-        assertEquals(planDTOCorrect.getName(), correctPlan.getName());
-        assertEquals(planDTOCorrect.getAge(), correctPlan.getAge());
-        assertEquals(planDTOCorrect.getTimeToTrain(), correctPlan.getTimeToTrain());
-        assertEquals(planDTOCorrect.getGender(), correctPlan.getGender());
-        assertEquals(planDTOCorrect.getGoal(), correctPlan.getGoal());
-        assertEquals(List.of(benchPress), correctPlan.getExercises());
+        assertNotNull(validPlan.getCreatedAt());
+        assertEquals(planDTOValid.getName(), validPlan.getName());
+        assertEquals(planDTOValid.getAge(), validPlan.getAge());
+        assertEquals(planDTOValid.getTimeToTrain(), validPlan.getTimeToTrain());
+        assertEquals(planDTOValid.getGender(), validPlan.getGender());
+        assertEquals(planDTOValid.getGoal(), validPlan.getGoal());
+        assertEquals(List.of(benchPress), validPlan.getExercises());
     }
 
     public MvcResult getMvcResult(String postBody, int expectedStatus) throws Exception {

@@ -37,7 +37,7 @@ public class TrainingPlanGeneratorServiceIntegrationTest {
 
 
     @Test
-    public void createCorrectPlanWhenDTOCorrect() {
+    public void createPlanIfDTOValid() {
         TrainingPlanDTO planDTO = new TrainingPlanDTO("Pushday", 22, "Male", 51, "Strength", List.of(1L));
 
         MuscleGroup back = new MuscleGroup("Back", 3);
