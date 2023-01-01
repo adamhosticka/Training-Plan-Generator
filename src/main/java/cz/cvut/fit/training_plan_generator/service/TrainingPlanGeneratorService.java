@@ -20,6 +20,7 @@ public class TrainingPlanGeneratorService {
     private final MuscleGroupRepository muscleGroupRepository;
     private final ExerciseRepository exerciseRepository;
     private final TrainingPlanRepository trainingPlanRepository;
+    public static final int exerciseLimit = 12;
 
 
     public TrainingPlanGeneratorService(MuscleGroupRepository muscleGroupRepository, ExerciseRepository exerciseRepository, TrainingPlanRepository trainingPlanRepository) {
@@ -70,6 +71,6 @@ public class TrainingPlanGeneratorService {
     }
 
     public int setNumberOfExercises(int newNumber) {
-        return Math.min(newNumber, 12);
+        return Math.min(newNumber, exerciseLimit);
     }
 }
