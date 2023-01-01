@@ -1,6 +1,8 @@
 package cz.cvut.fit.training_plan_generator.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.util.*;
 
 @Entity
@@ -9,8 +11,10 @@ public class Exercise {
     private Long id;
     private String name;
     @ManyToOne
+    @NotNull
     private Category category;
     @ManyToMany
+    @NotEmpty
     private Set<MuscleGroup> muscleGroups = new HashSet<>();
 
     public Exercise() {}
