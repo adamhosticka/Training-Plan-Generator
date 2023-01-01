@@ -8,68 +8,22 @@
           "name": "id_cviku",
           "primary": true,
           "unique": false,
-          "nullable": false
+          "nullable": false,
+          "type": null
         },
         {
           "name": "nazev",
           "primary": false,
           "unique": false,
-          "nullable": false
+          "nullable": false,
+          "type": "varchar(256)"
         }
       ],
       "transform": {
-        "x": 1081.207602339181,
-        "y": 21.395331131784523,
-        "width": 125,
-        "height": 98.88888888888887
-      }
-    },
-    {
-      "name": "Cvik_svalova_skupina",
-      "parent": null,
-      "attr": [
-        {
-          "name": "id_cvik_svalova_skupina",
-          "primary": true,
-          "unique": false,
-          "nullable": false
-        },
-        {
-          "name": "priorita",
-          "primary": false,
-          "unique": false,
-          "nullable": false
-        }
-      ],
-      "transform": {
-        "x": 1346.0409356725147,
-        "y": 19.72574048850965,
-        "width": 245.61666870117188,
-        "height": 103.33333333333329
-      }
-    },
-    {
-      "name": "Cvik_treninkovy_plan",
-      "parent": null,
-      "attr": [
-        {
-          "name": "id_cvik_treninkovy_plan",
-          "primary": true,
-          "unique": false,
-          "nullable": false
-        },
-        {
-          "name": "poradi",
-          "primary": false,
-          "unique": false,
-          "nullable": false
-        }
-      ],
-      "transform": {
-        "x": 683.7631578947367,
-        "y": 26.142108314915703,
-        "width": 240.48333740234375,
-        "height": 98.19999694824219
+        "x": 998.6671165092214,
+        "y": 49.88386014662935,
+        "width": 241.03334045410156,
+        "height": 124.83334350585938
       }
     },
     {
@@ -77,40 +31,45 @@
       "parent": null,
       "attr": [
         {
-          "name": "id",
+          "name": "id_kategorie",
           "primary": true,
           "unique": false,
-          "nullable": false
+          "nullable": false,
+          "type": null
         },
         {
-          "name": "název",
+          "name": "nazev",
           "primary": false,
           "unique": false,
-          "nullable": false
+          "nullable": false,
+          "type": null
         },
         {
           "name": "komplexita",
           "primary": false,
           "unique": false,
-          "nullable": false
+          "nullable": false,
+          "type": "int"
         },
         {
           "name": "optimani_pocet_serii",
           "primary": false,
           "unique": false,
-          "nullable": false
+          "nullable": false,
+          "type": "int"
         },
         {
           "name": "optimalni_pocet_opakovani",
           "primary": false,
           "unique": false,
-          "nullable": false
+          "nullable": false,
+          "type": "int"
         }
       ],
       "transform": {
-        "x": 1051.7105263157894,
-        "y": 192.30468785693074,
-        "width": 182.00000000000034,
+        "x": 1002.8756449948401,
+        "y": 252.22625648438168,
+        "width": 231.5833282470703,
         "height": 116.11663818359375
       }
     },
@@ -122,24 +81,27 @@
           "name": "id_svalove_skupiny",
           "primary": true,
           "unique": false,
-          "nullable": false
+          "nullable": false,
+          "type": null
         },
         {
           "name": "nazev",
           "primary": false,
           "unique": false,
-          "nullable": false
+          "nullable": false,
+          "type": null
         },
         {
           "name": "objem",
           "primary": false,
           "unique": false,
-          "nullable": false
+          "nullable": false,
+          "type": "int"
         }
       ],
       "transform": {
-        "x": 1338.3771929824559,
-        "y": 191.3017638803225,
+        "x": 1403.9412955465582,
+        "y": 46.378686957245606,
         "width": 196.33333333333348,
         "height": 104.99999999999997
       }
@@ -152,42 +114,79 @@
           "name": "id_treninkoveho_planu",
           "primary": true,
           "unique": false,
-          "nullable": false
+          "nullable": false,
+          "type": null
         },
         {
           "name": "datum_vytvoreni",
           "primary": false,
           "unique": false,
-          "nullable": false
+          "nullable": false,
+          "type": "date"
+        },
+        {
+          "name": "nazev",
+          "primary": false,
+          "unique": false,
+          "nullable": false,
+          "type": null
+        },
+        {
+          "name": "vek_tvurce",
+          "primary": false,
+          "unique": false,
+          "nullable": false,
+          "type": "int"
+        },
+        {
+          "name": "pohlavi_tvurce",
+          "primary": false,
+          "unique": false,
+          "nullable": false,
+          "type": null
+        },
+        {
+          "name": "doba_treninku",
+          "primary": false,
+          "unique": false,
+          "nullable": false,
+          "type": "int"
+        },
+        {
+          "name": "cil",
+          "primary": false,
+          "unique": false,
+          "nullable": false,
+          "type": null
         }
       ],
       "transform": {
-        "x": 678.3947368421052,
-        "y": 195.08947673596836,
-        "width": 250.66665649414062,
-        "height": 124.81666564941406
+        "x": 1110.0876342439806,
+        "y": -243.24019359370186,
+        "width": 290.2833251953125,
+        "height": 208.4833221435547
       }
     }
   ],
   "relations": [
     [
       {
-        "entity": "Cvik_svalova_skupina",
+        "entity": "Cvik",
         "identifying": false,
         "optional": false,
         "cardinality": 0,
         "xor": null,
-        "name": null,
+        "name": "cvici",
         "transform": {
           "anchor": {
-            "x": 1437.2576028478077,
-            "y": 123.05907382184293,
-            "edge": 2
+            "x": 1239.7004569633227,
+            "y": 99.32830459107379,
+            "edge": 1
           },
           "points": [
             {
-              "x": 1436.900731248465,
-              "y": 157.18041885108272
+              "x": 1321.8208762549405,
+              "y": 99.10349577415968
             }
           ],
           "manual": false
@@ -197,65 +196,19 @@
         "entity": "Svalova_skupina",
         "identifying": false,
         "optional": true,
-        "cardinality": 1,
-        "xor": null,
-        "name": null,
-        "transform": {
-          "anchor": {
-            "x": 1436.5438596491226,
-            "y": 191.3017638803225,
-            "edge": 0
-          },
-          "points": [
-            {
-              "x": 1436.900731248465,
-              "y": 157.18041885108272
-            }
-          ],
-          "manual": false
-        }
-      }
-    ],
-    [
-      {
-        "entity": "Cvik_treninkovy_plan",
-        "identifying": false,
-        "optional": false,
         "cardinality": 0,
         "xor": null,
         "name": null,
         "transform": {
           "anchor": {
-            "x": 804.0048265959085,
-            "y": 124.34210526315789,
-            "edge": 2
+            "x": 1403.9412955465582,
+            "y": 98.87868695724558,
+            "edge": 3
           },
           "points": [
             {
-              "x": 803.866445842542,
-              "y": 159.71579099956313
-            }
-          ],
-          "manual": false
-        }
-      },
-      {
-        "entity": "Treninkovy_plan",
-        "identifying": false,
-        "optional": true,
-        "cardinality": 1,
-        "xor": null,
-        "name": null,
-        "transform": {
-          "anchor": {
-            "x": 803.7280650891755,
-            "y": 195.08947673596836,
-            "edge": 0
-          },
-          "points": [
-            {
-              "x": 803.866445842542,
-              "y": 159.71579099956313
+              "x": 1321.8208762549405,
+              "y": 99.10349577415968
             }
           ],
           "manual": false
@@ -269,17 +222,17 @@
         "optional": false,
         "cardinality": 0,
         "xor": null,
-        "name": null,
+        "name": "je klasifikovan",
         "transform": {
           "anchor": {
-            "x": 1143.7076023391812,
-            "y": 120.28422002067337,
+            "x": 1119.1837867362722,
+            "y": 174.71720365248873,
             "edge": 2
           },
           "points": [
             {
-              "x": 1143.2090643274853,
-              "y": 156.29445393880206
+              "x": 1118.9255479273238,
+              "y": 213.4717300684352
             }
           ],
           "manual": false
@@ -294,14 +247,14 @@
         "name": null,
         "transform": {
           "anchor": {
-            "x": 1142.7105263157894,
-            "y": 192.30468785693074,
+            "x": 1118.6673091183752,
+            "y": 252.22625648438168,
             "edge": 0
           },
           "points": [
             {
-              "x": 1143.2090643274853,
-              "y": 156.29445393880206
+              "x": 1118.9255479273238,
+              "y": 213.4717300684352
             }
           ],
           "manual": false
@@ -313,87 +266,87 @@
         "entity": "Cvik",
         "identifying": false,
         "optional": true,
-        "cardinality": 1,
+        "cardinality": 0,
         "xor": null,
         "name": null,
         "transform": {
           "anchor": {
-            "x": 1081.207602339181,
-            "y": 70.83977557622896,
-            "edge": 3
+            "x": 1119.1837867362722,
+            "y": 49.88386014662935,
+            "edge": 0
           },
           "points": [
             {
-              "x": 1002.7270488181307,
-              "y": 71.51725773504602
+              "x": 1180.3593867966204,
+              "y": 10.628517744047922
             }
           ],
           "manual": false
         }
       },
       {
-        "entity": "Cvik_treninkovy_plan",
+        "entity": "Treninkovy_plan",
         "identifying": false,
-        "optional": false,
+        "optional": true,
         "cardinality": 0,
         "xor": null,
-        "name": null,
+        "name": "obsahuje",
         "transform": {
           "anchor": {
-            "x": 924.2464952970804,
-            "y": 72.19473989386307,
-            "edge": 1
+            "x": 1256.150371472353,
+            "y": -34.75687145014717,
+            "edge": 2
           },
           "points": [
             {
-              "x": 1002.7270488181307,
-              "y": 71.51725773504602
+              "x": 1180.3593867966204,
+              "y": 10.628517744047922
             }
           ],
-          "manual": false
+          "manual": true
         }
       }
     ],
     [
       {
-        "entity": "Cvik",
+        "entity": "Svalova_skupina",
         "identifying": false,
         "optional": true,
-        "cardinality": 1,
+        "cardinality": 0,
         "xor": null,
         "name": null,
         "transform": {
           "anchor": {
-            "x": 1206.2076023391812,
-            "y": 70.83977557622894,
-            "edge": 1
+            "x": 1502.107962213225,
+            "y": 46.378686957245606,
+            "edge": 0
           },
           "points": [
             {
-              "x": 1276.124269005848,
-              "y": 71.2549802545915
+              "x": 1456.739460826259,
+              "y": -51.809922782339456
             }
           ],
           "manual": false
         }
       },
       {
-        "entity": "Cvik_svalova_skupina",
+        "entity": "Treninkovy_plan",
         "identifying": false,
         "optional": false,
         "cardinality": 0,
         "xor": null,
-        "name": null,
+        "name": "se zameruje na",
         "transform": {
           "anchor": {
-            "x": 1346.0409356725147,
-            "y": 71.67018493295406,
-            "edge": 3
+            "x": 1400.370959439293,
+            "y": -138.99853252192452,
+            "edge": 1
           },
           "points": [
             {
-              "x": 1276.124269005848,
-              "y": 71.2549802545915
+              "x": 1456.739460826259,
+              "y": -51.809922782339456
             }
           ],
           "manual": false
