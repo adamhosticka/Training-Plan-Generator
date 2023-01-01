@@ -116,7 +116,7 @@ class TrainingPlanGenerator extends Component {
                         </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="muscleGroups">
-                        <Form.Label>Muscle groups <small>(choose atleast one)</small></Form.Label>
+                        <Form.Label>Muscle groups <small>(choose at least one)</small></Form.Label>
                         <div>
                             {this.state.muscleGroups.map(muscleGroup => (
                                 <Form.Check inline id={muscleGroup.detail.name} label={muscleGroup.detail.name} type="checkbox"
