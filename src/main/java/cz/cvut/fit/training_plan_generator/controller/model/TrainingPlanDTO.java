@@ -1,7 +1,5 @@
 package cz.cvut.fit.training_plan_generator.controller.model;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.util.List;
 import java.util.Objects;
 
