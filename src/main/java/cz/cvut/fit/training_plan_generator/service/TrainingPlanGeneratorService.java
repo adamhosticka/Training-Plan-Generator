@@ -10,7 +10,6 @@ import cz.cvut.fit.training_plan_generator.domain.TrainingPlan;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -52,16 +51,25 @@ public class TrainingPlanGeneratorService {
     }
 
     public List<Exercise> generateExercises(TrainingPlan plan) {
-//        List<MuscleGroup> allMuscleGroups = (List<MuscleGroup>) muscleGroupRepository.findAll();
         List<Exercise> allExercises = (List<Exercise>) exerciseRepository.findAll();
-//        List<Category> allCategories = (List<Category>) categoryRepository.findAll();
+        int nrOfExercises = setNumberOfExercises(plan.getTimeToTrain() / 10);
         List<Exercise> planExercises = allExercises.stream()
-                .filter(exercise -> {
-                    Set<MuscleGroup> mgs = new HashSet<>(plan.getMuscleGroups());
-                    mgs.retainAll(exercise.getMuscleGroups());
-                    return !mgs.isEmpty();
-                })
+                .filter(exercise -> plan.getMuscleGroups().containsAll(exercise.getMuscleGroups()))
                 .toList();
-        return planExercises;
+        int startIndex, endIndex;
+        if(plan.getGender().equalsIgnoreCase("male")) nrOfExercises = setNumberOfExercises(nrOfExercises + 1);
+        if(plan.getGoal().equalsIgnoreCase("hypertrophy")) {
+            nrOfExercises = setNumberOfExercises(nrOfExercises + 1);
+            endIndex = planExercises.size();
+            startIndex = Math.max(0, endIndex - nrOfExercises);
+        } else {
+            startIndex = 0;
+            endIndex = nrOfExercises;
+        }
+        return planExercises.subList(startIndex, endIndex);
+    }
+
+    public int setNumberOfExercises(int newNumber) {
+        return Math.min(newNumber, 12);
     }
 }
