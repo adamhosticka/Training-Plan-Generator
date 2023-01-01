@@ -18,7 +18,6 @@ class Exercises extends Component{
 
     componentDidMount() {
         axios.get(apiUri + '/exercises/detail').then(res => {
-            console.log(res);
             this.setState({
                 loading: false,
                 exercises: res.data.sort((x, y) => x.name > y.name),

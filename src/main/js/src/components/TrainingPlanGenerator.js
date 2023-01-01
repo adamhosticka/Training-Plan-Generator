@@ -1,6 +1,5 @@
 import {Component} from "react";
 import {Alert, Button, Form} from "react-bootstrap";
-// import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from "axios";
 import apiUri from "../helper/constants";
@@ -40,14 +39,12 @@ class TrainingPlanGenerator extends Component {
         delete payload.muscleGroups;
         delete payload.status;
         delete payload.createdPlanId;
-        console.log(payload);
         axios.post(apiUri + '/createPlan', payload).then(res => {
             this.setState({
                 status: res.status,
                 createdPlanId: res.data.id
             });
         }).catch(e => {
-            console.log(e);
             this.setState({status: e.response.status});
         });
     }
@@ -119,7 +116,7 @@ class TrainingPlanGenerator extends Component {
                         </Form.Select>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="muscleGroups">
-                        <Form.Label>Muscle groups <small>(choose atleast one)</small></Form.Label>
+                        <Form.Label>Muscle groups <small>(choose at least one)</small></Form.Label>
                         <div>
                             {this.state.muscleGroups.map(muscleGroup => (
                                 <Form.Check inline id={muscleGroup.detail.name} label={muscleGroup.detail.name} type="checkbox"
