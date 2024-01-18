@@ -4,7 +4,8 @@
 
 - Start SpringBootAplication (cz.cvut.fit.training_plan_generator.TrainingPlanGenerator.main) 
 to run backend on http://localhost:8080
-- Run ```npm start``` (in src/main/js) to start frontend on http://localhost:3000
+  - Make sure you have JDK Amazon Corretto 17 (17.0.10)
+- Run ```npm install``` and then ```npm start``` (in src/main/js) to start frontend on http://localhost:3000
 
 ### API Documentation
 
